@@ -7,6 +7,8 @@ export default function Footer() {
       <div className="flex justify-center gap-4 mb-8">
         <a
           href="#"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-xl p-2 rounded-full bg-white/10 backdrop-blur-md 
                  hover:bg-violet-600 hover:scale-110 transition-all"
         >
@@ -15,6 +17,8 @@ export default function Footer() {
 
         <a
           href="#"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-xl p-2 rounded-full bg-white/10 backdrop-blur-md
                  hover:bg-violet-600 hover:scale-110 transition-all"
         >
@@ -23,6 +27,8 @@ export default function Footer() {
 
         <a
           href="#"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-xl p-2 rounded-full bg-white/10 backdrop-blur-md
                  hover:bg-violet-600 hover:scale-110 transition-all"
         >
@@ -31,6 +37,8 @@ export default function Footer() {
 
         <a
           href="#"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-xl p-2 rounded-full bg-white/10 backdrop-blur-md
                  hover:bg-violet-600 hover:scale-110 transition-all"
         >
@@ -43,7 +51,7 @@ export default function Footer() {
 
       {/* Texto de copy */}
       <p className="text-center text-sm opacity-70">
-        © {new Date().getFullYear()} FimbaGest — Todos os direitos reservados.
+        &copy; {new Date().getFullYear()} FimbaGest — Todos os direitos reservados.
       </p>
     </footer>
   );
