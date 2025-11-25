@@ -369,7 +369,7 @@ export default function Home() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <form className="grid gap-6">
+          <form method="POST" className="grid gap-6">
             <div>
               <label className="block mb-2 font-semibold text-violet-300">
                 Nome
