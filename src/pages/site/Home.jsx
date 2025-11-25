@@ -377,6 +377,7 @@ export default function Home() {
               <input
                 type="text"
                 className="w-full p-3 rounded-lg bg-blue-950/60 border border-blue-900 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                required
               />
             </div>
             <div>
@@ -386,6 +387,7 @@ export default function Home() {
               <input
                 type="email"
                 className="w-full p-3 rounded-lg bg-blue-950/60 border border-blue-900 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                required
               />
             </div>
             <div>
@@ -395,6 +397,7 @@ export default function Home() {
               <textarea
                 rows="4"
                 className="w-full p-3 rounded-lg bg-blue-950/60 border border-blue-900 focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none"
+                required
               ></textarea>
             </div>
             <button className="mt-2 w-full py-3 rounded-xl font-bold bg-violet-600 hover:bg-violet-700 transition-all cursor-pointer">
