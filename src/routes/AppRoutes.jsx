@@ -8,6 +8,9 @@ import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 
+//Admin
+import DashboardAdmin from "../pages/admin/DashboardAdmin";
+
 export default function AppRoutes () {
     return (
         <Routes>
@@ -19,6 +22,9 @@ export default function AppRoutes () {
             <Route path="/auth/login" element={<Login />} />
             <Route path="/auth/register" element={<Register />} />
             <Route path="/auth/forgot-password" element={<ForgotPassword />} />
+
+            {/*Rotas do admin */}
+            <Route path="/dashboard/admin" element={<DashboardAdmin />} />
         </Routes>
     )
 }
