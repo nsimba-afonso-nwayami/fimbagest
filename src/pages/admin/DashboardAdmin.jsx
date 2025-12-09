@@ -67,7 +67,7 @@ export default function DashboardAdmin() {
       )}
 
       {/* ÁREA PRINCIPAL */}
-      <div className="flex-1 md:ml-64 overflow-x-hidden"> {/* 👈 ADIÇÃO: overflow-x-hidden para prevenir vazamentos do conteúdo */}
+      <div className="flex-1 md:ml-64 overflow-x-hidden"> {/* ADIÇÃO: overflow-x-hidden para prevenir vazamentos do conteúdo */}
         {/* HEADER */}
         <header
           className="
@@ -85,7 +85,7 @@ export default function DashboardAdmin() {
             <i className="fas fa-bars"></i>
           </button>
 
-          <h2 className="text-lg sm:text-xl font-bold tracking-wide"> {/* 👈 AJUSTE: tamanho do título para mobile */}
+          <h2 className="text-lg sm:text-xl font-bold tracking-wide"> {/* AJUSTE: tamanho do título para mobile */}
             Painel Administrativo
           </h2>
 
@@ -204,13 +204,13 @@ export default function DashboardAdmin() {
                     <td className="p-3 whitespace-nowrap">Usuário {i}</td>
                     <td className="p-3 whitespace-nowrap">user{i}@gmail.com</td>
                     <td className="p-3 whitespace-nowrap">
-                      <span className="px-3 py-1 bg-green-600/40 rounded-lg text-xs"> {/* 👈 AJUSTE: tamanho da fonte do status */}
+                      <span className="px-3 py-1 bg-green-600/40 rounded-lg text-xs"> {/* AJUSTE: tamanho da fonte do status */}
                         Ativo
                       </span>
                     </td>
 
                     {/* ÍCONES */}
-                    <td className="p-3 text-center flex justify-center gap-3 sm:gap-4 text-base"> {/* 👈 AJUSTE: tamanho dos ícones e espaçamento */}
+                    <td className="p-3 text-center flex justify-center gap-3 sm:gap-4 text-base"> {/* AJUSTE: tamanho dos ícones e espaçamento */}
                       <button className="text-blue-300 hover:text-blue-200">
                         <i className="fas fa-eye"></i>
                       </button>
@@ -229,8 +229,8 @@ export default function DashboardAdmin() {
             </table>
 
             {/* PAGINAÇÃO */}
-            <div className="flex flex-col sm:flex-row justify-between items-center mt-6 gap-4"> {/* 👈 ALTERADO: flex-col no mobile, flex-row a partir de sm */}
-              <p className="opacity-70 text-xs sm:text-sm"> {/* 👈 AJUSTE: tamanho da fonte */}
+            <div className="flex flex-col sm:flex-row justify-between items-center mt-6 gap-4"> {/* ALTERADO: flex-col no mobile, flex-row a partir de sm */}
+              <p className="opacity-70 text-xs sm:text-sm"> {/* AJUSTE: tamanho da fonte */}
                 Mostrando 1 a 5 de 25 registros
               </p>
 
