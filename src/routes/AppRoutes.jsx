@@ -17,6 +17,16 @@ import OcorrenciasAdmin from "../pages/superadmin/OcorrenciasAdmin";
 import ConfiguracoesAdmin from "../pages/superadmin/ConfiguracoesAdmin";
 import ErroAdmin from "../pages/superadmin/ErroAdmin";
 
+//Condo Admin
+import DashboardCondoAdmin from "../pages/condoadmin/DashboardCondoAdmin";
+import MoradoresCondoAdmin from "../pages/condoadmin/MoradoresCondoAdmin";
+import FinanceiroCondoAdmin from "../pages/condoadmin/FinanceiroCondoAdmin";
+import ComunicacaoCondoAdmin from "../pages/condoadmin/ComunicacaoCondoAdmin";
+import ReservasCondoAdmin from "../pages/condoadmin/ReservasCondoAdmin";
+import OcorrenciasCondoAdmin from "../pages/condoadmin/OcorrenciasCondoAdmin";
+import ConfiguracoesCondoAdmin from "../pages/condoadmin/ConfiguracoesCondoAdmin";
+import NotFoundPage from "../pages/condoadmin/NotFoundPage";
+
 export default function AppRoutes () {
     return (
         <Routes>
@@ -38,6 +48,18 @@ export default function AppRoutes () {
                 <Route path="ocorrencias" element={<OcorrenciasAdmin />} />
                 <Route path="configuracoes" element={<ConfiguracoesAdmin />} />
                 <Route path="*" element={<ErroAdmin />} />
+            </Route>
+
+            {/*Rotas do super admin */}
+            <Route path="/dashboard/condoadmin/">
+                <Route path="" element={<DashboardCondoAdmin />} />
+                <Route path="moradores" element={<MoradoresCondoAdmin />} />
+                <Route path="financeiro" element={<FinanceiroCondoAdmin />} />
+                <Route path="comunicacao" element={<ComunicacaoCondoAdmin />} />
+                <Route path="reservas" element={<ReservasCondoAdmin />} />
+                <Route path="ocorrencias" element={<OcorrenciasCondoAdmin />} />
+                <Route path="configuracoes" element={<ConfiguracoesCondoAdmin />} />
+                <Route path="*" element={<NotFoundPage />} />
             </Route>
         </Routes>
     )
