@@ -27,6 +27,15 @@ import OcorrenciasCondoAdmin from "../pages/condoadmin/OcorrenciasCondoAdmin";
 import ConfiguracoesCondoAdmin from "../pages/condoadmin/ConfiguracoesCondoAdmin";
 import NotFoundPage from "../pages/condoadmin/NotFoundPage";
 
+//Morador
+import DashboardMorador from "../pages/morador/DashboardMorador";
+import MinhasReservasMorador from "../pages/morador/MinhasReservasMorador";
+import MinhasOcorrenciasMorador from "../pages/morador/MinhasOcorrenciasMorador";
+import FinanceiroMorador from "../pages/morador/FinanceiroMorador";
+import AvisosComunicadosMorador from "../pages/morador/AvisosComunicadosMorador";
+import MeuPerfilMorador from "../pages/morador/MeuPerfilMorador";
+import NotFoundMorador from "../pages/morador/NotFoundMorador";
+
 export default function AppRoutes () {
     return (
         <Routes>
@@ -50,7 +59,7 @@ export default function AppRoutes () {
                 <Route path="*" element={<ErroAdmin />} />
             </Route>
 
-            {/*Rotas do super admin */}
+            {/*Rotas do admin do condomínio */}
             <Route path="/dashboard/condoadmin/">
                 <Route path="" element={<DashboardCondoAdmin />} />
                 <Route path="moradores" element={<MoradoresCondoAdmin />} />
@@ -60,6 +69,17 @@ export default function AppRoutes () {
                 <Route path="ocorrencias" element={<OcorrenciasCondoAdmin />} />
                 <Route path="configuracoes" element={<ConfiguracoesCondoAdmin />} />
                 <Route path="*" element={<NotFoundPage />} />
+            </Route>
+
+            {/*Rotas do morador do condomínio */}
+            <Route path="/dashboard/morador/">
+                <Route path="" element={<DashboardMorador />} />
+                <Route path="reservas" element={<MinhasReservasMorador />} />
+                <Route path="ocorrencias" element={<MinhasOcorrenciasMorador />} />
+                <Route path="financeiro" element={<FinanceiroMorador />} />
+                <Route path="avisos" element={<AvisosComunicadosMorador />} />
+                <Route path="meu-perfil" element={<MeuPerfilMorador />} />
+                <Route path="*" element={<NotFoundMorador />} />
             </Route>
         </Routes>
     )
