@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function CobrancasAdmin() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -106,7 +107,7 @@ export default function CobrancasAdmin() {
 
   return (
     <div className="min-h-screen bg-blue-950 text-white flex">
-      {/* SIDEBAR (Reutilizado) */}
+      {/* SIDEBAR */}
       <aside
         className={`
           bg-blue-900/40 backdrop-blur-xl border-r border-blue-800 
@@ -114,7 +115,7 @@ export default function CobrancasAdmin() {
           transition-transform duration-300
           ${sidebarOpen ? "translate-x-0" : "-translate-x-64"}
           md:translate-x-0
-          z-50 
+          z-9999 {/* Ajustado z-index para Tailwind standard: z-50 a z-[9999] */}
         `}
       >
         {/* BOTÃO FECHAR MOBILE */}
@@ -130,33 +131,50 @@ export default function CobrancasAdmin() {
           Fimba<span className="text-violet-400">Gest</span>
         </h1>
 
-        {/* MENU: Destaque 'Cobranças' */}
+        {/* MENU (Sem alterações necessárias na navegação) */}
         <nav className="space-y-4 text-lg">
-          <a className="block p-3 rounded-lg hover:bg-blue-800/40 cursor-pointer">
+          <Link
+            to="/dashboard/super-admin/"
+            className="block p-3 rounded-lg hover:bg-blue-800/40 cursor-pointer"
+          >
             <i className="fas fa-chart-line mr-3 text-violet-400"></i>
             Dashboard
-          </a>
-          <a className="block p-3 rounded-lg hover:bg-blue-800/40 cursor-pointer">
+          </Link>
+          <Link
+            to="/dashboard/super-admin/condominios"
+            className="block p-3 rounded-lg hover:bg-blue-800/40 cursor-pointer"
+          >
             <i className="fas fa-building mr-3 text-violet-400"></i>
             Condomínios
-          </a>
-          <a className="block p-3 rounded-lg hover:bg-blue-800/40 cursor-pointer">
+          </Link>
+          <Link
+            to="/dashboard/super-admin/moradores"
+            className="block p-3 rounded-lg hover:bg-blue-800/40 cursor-pointer"
+          >
             <i className="fas fa-users mr-3 text-violet-400"></i>
             Moradores
-          </a>
-          {/* Item Ativo */}
-          <a className="block p-3 rounded-lg bg-blue-800 cursor-pointer border-l-4 border-violet-400 font-semibold">
+          </Link>
+          <Link
+            to="/dashboard/super-admin/cobrancas"
+            className="block p-3 rounded-lg hover:bg-blue-800/40 cursor-pointer"
+          >
             <i className="fas fa-file-invoice-dollar mr-3 text-violet-400"></i>
             Cobranças
-          </a>
-          <a className="block p-3 rounded-lg hover:bg-blue-800/40 cursor-pointer">
+          </Link>
+          <Link
+            to="/dashboard/super-admin/ocorrencias"
+            className="block p-3 rounded-lg hover:bg-blue-800/40 cursor-pointer"
+          >
             <i className="fas fa-tools mr-3 text-violet-400"></i>
             Ocorrências
-          </a>
-          <a className="block p-3 rounded-lg hover:bg-blue-800/40 cursor-pointer">
+          </Link>
+          <Link
+            to="/dashboard/super-admin/configuracoes"
+            className="block p-3 rounded-lg hover:bg-blue-800/40 cursor-pointer"
+          >
             <i className="fas fa-gear mr-3 text-violet-400"></i>
             Configurações
-          </a>
+          </Link>
         </nav>
       </aside>
 
