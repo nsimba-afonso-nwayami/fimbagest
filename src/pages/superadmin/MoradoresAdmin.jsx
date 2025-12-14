@@ -186,14 +186,6 @@ export default function MoradoresAdmin() {
 
         {/* CONTEÚDO PRINCIPAL */}
         <main className="mt-20 p-4 sm:p-6 space-y-8 sm:space-y-10">
-          
-          {/* BOTÃO ADICIONAR */}
-          <div className="flex justify-end">
-            <button className="px-5 py-2 bg-violet-600 hover:bg-violet-500 transition font-semibold rounded-lg shadow-lg flex items-center gap-2">
-              <i className="fas fa-user-plus"></i>
-              Adicionar Novo Morador
-            </button>
-          </div>
 
           {/* CARDS (Sumário de Moradores) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
