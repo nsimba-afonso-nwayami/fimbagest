@@ -39,10 +39,11 @@ export default function Register() {
 
       await cadastrarService(payload);
       toast.success("Cadastro realizado com sucesso!");
-      reset(); // limpa o formulário
+      reset();
+
       setTimeout(() => {
         navigate("/auth/login");
-      }, 1500);
+      }, 1500); // atraso de 1.5s
     } catch (error) {
       console.error(error.response?.data || error.message);
       toast.error(
@@ -177,9 +178,7 @@ export default function Register() {
               <option value="funcionario">Funcionário</option>
             </select>
             {isSubmitted && errors.perfil && (
-              <p className="text-red-400 text-sm mt-1">
-                {errors.perfil.message}
-              </p>
+              <p className="text-red-400 text-sm mt-1">{errors.perfil.message}</p>
             )}
           </div>
 
@@ -199,9 +198,7 @@ export default function Register() {
               }`}
             />
             {isSubmitted && errors.telefone && (
-              <p className="text-red-400 text-sm mt-1">
-                {errors.telefone.message}
-              </p>
+              <p className="text-red-400 text-sm mt-1">{errors.telefone.message}</p>
             )}
           </div>
 
@@ -225,12 +222,14 @@ export default function Register() {
             )}
           </div>
 
+          {/* BOTÃO COM SPINNER */}
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3 mt-2 rounded-xl font-bold bg-violet-600 hover:bg-violet-700 transition-all cursor-pointer text-white disabled:opacity-50"
+            className="w-full py-3 mt-2 rounded-xl font-bold bg-violet-600 hover:bg-violet-700 transition-all cursor-pointer text-white disabled:opacity-50 flex items-center justify-center gap-2"
           >
-            Cadastrar
+            {isSubmitting && <i className="fas fa-spinner fa-spin"></i>}
+            {isSubmitting ? "Cadastrando..." : "Cadastrar"}
           </button>
         </form>
 
