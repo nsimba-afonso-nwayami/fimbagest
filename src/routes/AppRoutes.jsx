@@ -20,6 +20,8 @@ import ErroAdmin from "../pages/superadmin/ErroAdmin";
 //Condo Admin
 import DashboardCondoAdmin from "../pages/condoadmin/DashboardCondoAdmin";
 import MoradoresCondoAdmin from "../pages/condoadmin/MoradoresCondoAdmin";
+import BlocosCondoAdmin from "../pages/condoadmin/BlocosCondoAdmin";
+import ApartamentosCondoAdmin from "../pages/condoadmin/ApartamentosCondoAdmin";
 import FinanceiroCondoAdmin from "../pages/condoadmin/FinanceiroCondoAdmin";
 import ComunicacaoCondoAdmin from "../pages/condoadmin/ComunicacaoCondoAdmin";
 import ReservasCondoAdmin from "../pages/condoadmin/ReservasCondoAdmin";
@@ -63,6 +65,8 @@ export default function AppRoutes () {
             <Route path="/dashboard/condoadmin/">
                 <Route path="" element={<DashboardCondoAdmin />} />
                 <Route path="moradores" element={<MoradoresCondoAdmin />} />
+                <Route path="blocos" element={<BlocosCondoAdmin />} />
+                <Route path="apartamentos" element={<ApartamentosCondoAdmin />} />
                 <Route path="financeiro" element={<FinanceiroCondoAdmin />} />
                 <Route path="comunicacao" element={<ComunicacaoCondoAdmin />} />
                 <Route path="reservas" element={<ReservasCondoAdmin />} />
