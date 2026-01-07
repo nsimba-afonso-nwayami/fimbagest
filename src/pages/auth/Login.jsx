@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import toast from "react-hot-toast";
+
 import { loginSchema } from "../../validations/loginSchema";
 import { loginService } from "../../services/LoginService";
+import { useAuth } from "../../contexts/AuthContext";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -12,7 +14,7 @@ const fadeUp = {
 };
 
 export default function Login() {
-  const navigate = useNavigate();
+  const { login } = useAuth(); // vem do contexto
 
   const {
     register,
@@ -27,19 +29,20 @@ export default function Login() {
 
   async function onSubmit(data) {
     try {
-      await loginService({
+      const response = await loginService({
         username: data.username,
         password: data.password,
       });
 
+      // response JÁ é o objeto da API
+      login(response);
+
       toast.success("Login realizado com sucesso!");
-      setTimeout(() => {
-        navigate("/dashboard/condoadmin/");
-      }, 1500);
     } catch (error) {
       console.error(error.response?.data || error.message);
       toast.error(
-        error.response?.data?.detail || "Erro ao fazer login. Verifique seus dados."
+        error.response?.data?.detail ||
+          "Erro ao fazer login. Verifique seus dados."
       );
     }
   }
@@ -63,7 +66,9 @@ export default function Login() {
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit, onError)}>
           {/* USERNAME */}
           <div>
-            <label className="block mb-2 text-violet-300 font-semibold">Username</label>
+            <label className="block mb-2 text-violet-300 font-semibold">
+              Username
+            </label>
             <input
               type="text"
               placeholder="Digite seu username"
@@ -75,13 +80,17 @@ export default function Login() {
               }`}
             />
             {isSubmitted && errors.username && (
-              <p className="text-red-400 text-sm mt-1">{errors.username.message}</p>
+              <p className="text-red-400 text-sm mt-1">
+                {errors.username.message}
+              </p>
             )}
           </div>
 
           {/* SENHA */}
           <div>
-            <label className="block mb-2 text-violet-300 font-semibold">Senha</label>
+            <label className="block mb-2 text-violet-300 font-semibold">
+              Senha
+            </label>
             <input
               type="password"
               placeholder="Digite sua senha"
@@ -93,11 +102,13 @@ export default function Login() {
               }`}
             />
             {isSubmitted && errors.password && (
-              <p className="text-red-400 text-sm mt-1">{errors.password.message}</p>
+              <p className="text-red-400 text-sm mt-1">
+                {errors.password.message}
+              </p>
             )}
           </div>
 
-          {/* BOTÃO COM SPINNER */}
+          {/* BOTÃO */}
           <button
             type="submit"
             disabled={isSubmitting}
@@ -107,7 +118,7 @@ export default function Login() {
             {isSubmitting ? "Entrando..." : "Entrar"}
           </button>
 
-          {/* Link de Esqueceu a senha */}
+          {/* Esqueceu senha */}
           <div className="text-right mt-2">
             <Link
               to="/auth/forgot-password"
