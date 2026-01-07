@@ -4,6 +4,10 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import FimbaVideo from "../../assets/video/fimbavideo.mp4";
 import SolicitarDemoImg from "../../assets/img/solicitar-demo.jpg";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import toast from "react-hot-toast";
+import { demoSchema } from "../../validations/demoSchema"; // ajuste o caminho se necessário
 
 // Variants para animação
 const fadeUp = {
@@ -17,6 +21,36 @@ const stagger = {
 };
 
 export default function Home() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting, isSubmitted },
+  } = useForm({
+    resolver: yupResolver(demoSchema),
+  });
+
+  const inputBase =
+    "w-full p-3 rounded-lg bg-blue-950/60 text-white focus:outline-none border transition-all";
+
+  async function onSubmit(data) {
+    try {
+      // Aqui você chamaria seu serviço, ex: await sendDemoService(data);
+      console.log("Dados da demo:", data);
+
+      // Simulando um delay de envio
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      toast.success("Solicitação enviada com sucesso! Entraremos em contato.");
+      reset(); // Limpa o formulário
+    } catch (error) {
+      toast.error("Erro ao enviar solicitação. Tente novamente mais tarde.");
+    }
+  }
+
+  function onError() {
+    toast.error("Verifique os campos do formulário");
+  }
   return (
     <>
       <Header />
@@ -58,7 +92,7 @@ export default function Home() {
             className="text-white mt-4 text-lg sm:text-xl md:text-2xl"
           >
             Recursos completos para automatizar tarefas, reduzir erros e
-            melhorar a comunicação. Ideal para moradores, administradoras e
+            melhorar a comunicação. Ideal para moradores, administradores e
             condomínios de todos os tamanhos.
           </motion.p>
 
@@ -254,7 +288,7 @@ export default function Home() {
                 Configuração do Condomínio
               </h3>
               <p className="text-sm opacity-80">
-                A administradora cadastra condomínios, blocos, moradores e
+                O administrador cadastra condomínios, blocos, moradores e
                 regras internas. Tudo pronto para começar em poucos minutos.
               </p>
             </motion.div>
@@ -327,7 +361,7 @@ export default function Home() {
           >
             <i className="fas fa-chart-line text-purple-400 text-5xl mb-4"></i>
             <h3 className="text-2xl font-bold mb-3">
-              A Administradora Acompanha Tudo em Tempo Real
+              O Administrador Acompanha Tudo em Tempo Real
             </h3>
             <p className="text-lg opacity-80">
               Dashboards mostram finanças, consumos, ocorrências e desempenho de
@@ -354,10 +388,10 @@ export default function Home() {
         >
           <h2 className="text-2xl md:text-4xl font-bold uppercase mb-4">
             <i className="fas fa-calendar-check text-violet-400 mr-2"></i>
-            Solicite uma Demo
+            Solicite uma Demonstração
           </h2>
           <p className="text-base md:text-xl opacity-90 px-2">
-            Para solicitar uma demo do produto, por favor preencha o formulário
+            Para solicitar uma demonstração do produto, por favor preencha o formulário
             de contato abaixo.
           </p>
         </motion.div>
@@ -369,39 +403,81 @@ export default function Home() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <form method="POST" className="grid gap-6">
+          <form
+            onSubmit={handleSubmit(onSubmit, onError)}
+            className="grid gap-6"
+          >
+            {/* NOME */}
             <div>
               <label className="block mb-2 font-semibold text-violet-300">
                 Nome
               </label>
               <input
                 type="text"
-                className="w-full p-3 rounded-lg bg-blue-950/60 border border-blue-900 focus:outline-none focus:ring-2 focus:ring-violet-500"
-                required
+                {...register("nome")}
+                className={`${inputBase} ${
+                  isSubmitted && errors.nome
+                    ? "border-red-500"
+                    : "border-blue-900 focus:ring-2 focus:ring-violet-500"
+                }`}
               />
+              {isSubmitted && errors.nome && (
+                <p className="text-red-400 text-sm mt-1">
+                  {errors.nome.message}
+                </p>
+              )}
             </div>
+
+            {/* EMAIL */}
             <div>
               <label className="block mb-2 font-semibold text-violet-300">
                 Email
               </label>
               <input
                 type="email"
-                className="w-full p-3 rounded-lg bg-blue-950/60 border border-blue-900 focus:outline-none focus:ring-2 focus:ring-violet-500"
-                required
+                {...register("email")}
+                className={`${inputBase} ${
+                  isSubmitted && errors.email
+                    ? "border-red-500"
+                    : "border-blue-900 focus:ring-2 focus:ring-violet-500"
+                }`}
               />
+              {isSubmitted && errors.email && (
+                <p className="text-red-400 text-sm mt-1">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
+
+            {/* MENSAGEM */}
             <div>
               <label className="block mb-2 font-semibold text-violet-300">
                 Digite sua mensagem aqui...
               </label>
               <textarea
                 rows="4"
-                className="w-full p-3 rounded-lg bg-blue-950/60 border border-blue-900 focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none"
-                required
+                {...register("mensagem")}
+                className={`${inputBase} resize-none ${
+                  isSubmitted && errors.mensagem
+                    ? "border-red-500"
+                    : "border-blue-900 focus:ring-2 focus:ring-violet-500"
+                }`}
               ></textarea>
+              {isSubmitted && errors.mensagem && (
+                <p className="text-red-400 text-sm mt-1">
+                  {errors.mensagem.message}
+                </p>
+              )}
             </div>
-            <button className="mt-2 w-full py-3 rounded-xl font-bold bg-violet-600 hover:bg-violet-700 transition-all cursor-pointer">
-              Enviar
+
+            {/* BOTÃO */}
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="mt-2 w-full py-3 rounded-xl font-bold bg-violet-600 hover:bg-violet-700 transition-all cursor-pointer text-white disabled:opacity-50 flex items-center justify-center gap-2"
+            >
+              {isSubmitting && <i className="fas fa-spinner fa-spin"></i>}
+              {isSubmitting ? "Enviando..." : "Enviar"}
             </button>
           </form>
 
