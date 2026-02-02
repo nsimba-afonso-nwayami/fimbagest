@@ -288,8 +288,8 @@ export default function Home() {
                 Configuração do Condomínio
               </h3>
               <p className="text-sm opacity-80">
-                O administrador cadastra condomínios, blocos, moradores e
-                regras internas. Tudo pronto para começar em poucos minutos.
+                O administrador cadastra condomínios, blocos, moradores e regras
+                internas. Tudo pronto para começar em poucos minutos.
               </p>
             </motion.div>
 
@@ -371,6 +371,144 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SEÇÃO DE PLANOS */}
+      <section
+        id="planos"
+        className="py-24 px-6 md:px-16 bg-blue-950 text-white"
+      >
+        <motion.div
+          className="max-w-5xl mx-auto text-center mb-16"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-wide">
+            Escolha o Plano Ideal
+          </h2>
+          <p className="text-lg md:text-xl mt-6 opacity-90 max-w-2xl mx-auto">
+            Transparência total para o seu condomínio. Comece hoje mesmo e sinta
+            a diferença na gestão.
+          </p>
+        </motion.div>
+
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+          {/* PLANO TRIAL - O DESTAQUE DE 30 DIAS */}
+          <motion.div
+            className="bg-indigo-900/40 border-2 border-violet-500 rounded-3xl p-8 shadow-xl flex flex-col justify-between relative overflow-hidden"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <div className="absolute top-0 right-0 bg-violet-500 text-white text-xs font-bold px-4 py-1 rounded-bl-lg uppercase">
+              Grátis
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold mb-2">Degustação</h3>
+              <div className="text-4xl font-extrabold mb-6">
+                Grátis
+                <span className="text-lg font-normal opacity-70">
+                  {" "}
+                  /30 dias
+                </span>
+              </div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center gap-2">
+                  <i className="fas fa-check text-violet-400"></i> Acesso total
+                  às funcionalidades
+                </li>
+                <li className="flex items-center gap-2">
+                  <i className="fas fa-check text-violet-400"></i> Suporte
+                  prioritário no setup
+                </li>
+                <li className="flex items-center gap-2">
+                  <i className="fas fa-check text-violet-400"></i> Sem
+                  necessidade de cartão
+                </li>
+              </ul>
+            </div>
+            <Link
+              to="/auth/register"
+              className="w-full py-3 text-center bg-violet-600 hover:bg-violet-700 rounded-xl font-bold transition-all"
+            >
+              Experimentar Grátis
+            </Link>
+          </motion.div>
+
+          {/* PLANO ESSENCIAL */}
+          <motion.div
+            className="bg-blue-900/20 border border-blue-800 rounded-3xl p-8 shadow-xl flex flex-col justify-between"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <div>
+              <h3 className="text-2xl font-bold mb-2">Essencial</h3>
+              <div className="text-4xl font-extrabold mb-6">Sob Consulta</div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center gap-2">
+                  <i className="fas fa-check text-violet-400"></i> Gestão
+                  Financeira
+                </li>
+                <li className="flex items-center gap-2">
+                  <i className="fas fa-check text-violet-400"></i> App do
+                  Morador
+                </li>
+                <li className="flex items-center gap-2">
+                  <i className="fas fa-check text-violet-400"></i> Até 50
+                  unidades
+                </li>
+              </ul>
+            </div>
+            <a
+              href="#solicitar-demo"
+              className="w-full py-3 text-center border border-violet-500 text-violet-400 hover:bg-violet-600 hover:text-white rounded-xl font-bold transition-all"
+            >
+              Saiba Mais
+            </a>
+          </motion.div>
+
+          {/* PLANO PRO */}
+          <motion.div
+            className="bg-blue-900/20 border border-blue-800 rounded-3xl p-8 shadow-xl flex flex-col justify-between"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <div>
+              <h3 className="text-2xl font-bold mb-2">Premium</h3>
+              <div className="text-4xl font-extrabold mb-6">Sob Consulta</div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center gap-2">
+                  <i className="fas fa-check text-violet-400"></i> Tudo do
+                  Essencial
+                </li>
+                <li className="flex items-center gap-2">
+                  <i className="fas fa-check text-violet-400"></i> Integração
+                  IoT e Sensores
+                </li>
+                <li className="flex items-center gap-2">
+                  <i className="fas fa-check text-violet-400"></i> Unidades
+                  Ilimitadas
+                </li>
+                <li className="flex items-center gap-2">
+                  <i className="fas fa-check text-violet-400"></i> IA 24/7 Ativa
+                </li>
+              </ul>
+            </div>
+            <a
+              href="#solicitar-demo"
+              className="w-full py-3 text-center border border-violet-500 text-violet-400 hover:bg-violet-600 hover:text-white rounded-xl font-bold transition-all"
+            >
+              Falar com Consultor
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
       {/* SOLICITAR DEMO */}
       <section
         id="solicitar-demo"
@@ -391,8 +529,8 @@ export default function Home() {
             Solicite uma Demonstração
           </h2>
           <p className="text-base md:text-xl opacity-90 px-2">
-            Para solicitar uma demonstração do produto, por favor preencha o formulário
-            de contato abaixo.
+            Para solicitar uma demonstração do produto, por favor preencha o
+            formulário de contato abaixo.
           </p>
         </motion.div>
 
