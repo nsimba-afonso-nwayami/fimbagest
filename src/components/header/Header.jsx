@@ -71,6 +71,18 @@ export default function Header() {
           Home
         </Link>
         <a
+          href="/#planos"
+          className="
+            text-2xl md:text-xl text-white
+            mx-0 md:ml-8 my-3 md:my-0
+            capitalize text-center
+            hover:text-violet-600
+             transition-all
+          "
+        >
+          Planos
+        </a>
+        <a
           href="/#sobre"
           className="
             text-2xl md:text-xl text-white
