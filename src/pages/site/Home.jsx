@@ -35,7 +35,7 @@ export default function Home() {
 
   async function onSubmit(data) {
     try {
-      // Aqui você chamaria seu serviço, ex: await sendDemoService(data);
+      // Aqui chamaria seu serviço, ex: await sendDemoService(data);
       console.log("Dados da demo:", data);
 
       // Simulando um delay de envio
@@ -51,6 +51,7 @@ export default function Home() {
   function onError() {
     toast.error("Verifique os campos do formulário");
   }
+
   return (
     <>
       <Header />
@@ -96,14 +97,27 @@ export default function Home() {
             condomínios de todos os tamanhos.
           </motion.p>
 
-          <motion.a
+          {/* Container para alinhar os botões */}
+          <motion.div
             variants={fadeUp}
-            whileHover={{ scale: 1.05 }}
-            href="/#solicitar-demo"
-            className="inline-block mt-6 px-10 py-3 text-white font-semibold bg-violet-600 hover:bg-violet-700 rounded-xl shadow-lg transition-all cursor-pointer"
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 relative z-10"
           >
-            Solicitar uma demo
-          </motion.a>
+            <a
+              href="/#planos"
+              className="inline-block px-10 py-3 text-white font-semibold bg-violet-600 hover:bg-violet-700 rounded-xl shadow-lg transition-all cursor-pointer text-center min-w-[200px]"
+            >
+              Experimentar grátis
+            </a>
+
+            <a
+              href="/#solicitar-demo"
+              className="inline-block px-10 py-3 text-white font-semibold bg-transparent border-2 border-white/20 hover:bg-white/10 rounded-xl shadow-lg transition-all cursor-pointer text-center min-w-[200px]"
+            >
+              Solicitar uma demo
+            </a>
+          </motion.div>
         </motion.div>
       </section>
 
