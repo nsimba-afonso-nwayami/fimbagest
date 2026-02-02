@@ -1,6 +1,10 @@
 import CondoLayout from "./components/CondoLayout";
+import { useState } from "react";
+import Modal from "./components/Modal";
 
 export default function DashboardCondoAdmin() {
+  const [openNovo, setOpenNovo] = useState(false);
+
   // --- Dados de Exemplo (Focados em UM Condomínio: "Residencial Jardins") ---
   const sumarioCondo = [
     {
@@ -50,7 +54,7 @@ export default function DashboardCondoAdmin() {
   return (
     <CondoLayout title="Dashboard do Condomínio">
       {/* CARDS (KPIs Operacionais) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {sumarioCondo.map((card, index) => (
           <div
             key={index}
@@ -69,10 +73,10 @@ export default function DashboardCondoAdmin() {
             </div>
           </div>
         ))}
-      </div>
+      </section>
 
       {/* GRÁFICOS E WIDGETS DE ACESSO RÁPIDO */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* WIDGET 1: INADIMPLÊNCIA CRÍTICA (2/3 da largura) */}
         <div className="lg:col-span-2 bg-gray-900/30 border border-gray-800 p-6 rounded-xl shadow-lg backdrop-blur-md">
           <h3 className="text-xl font-bold mb-4 flex justify-between items-center">
@@ -149,11 +153,143 @@ export default function DashboardCondoAdmin() {
             </div>
           </div>
 
-          <button className="w-full text-sm py-2 bg-violet-600 hover:bg-violet-500 transition font-semibold rounded-lg">
+          <button
+            onClick={() => setOpenNovo(true)}
+            className="w-full cursor-pointer text-sm py-2 bg-violet-600 hover:bg-violet-500 transition font-semibold rounded-lg"
+          >
             Criar Novo Aviso
           </button>
         </div>
-      </div>
+      </section>
+
+      {/* MODAL NOVO AGENDAMENTO */}
+      <Modal
+        isOpen={openNovo}
+        onClose={() => setOpenNovo(false)}
+        title="Novo Aviso"
+        icon="fas fa-bullhorn"
+      >
+        <div className="max-w-3xl mx-auto space-y-6">
+          {/* TÍTULO */}
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-white">Novo Aviso</h2>
+            <p className="text-gray-400 text-sm mt-1">
+              Preencha os dados abaixo para o criar o novo aviso
+            </p>
+          </div>
+
+          {/* FORMULÁRIO */}
+          <form className="grid gap-6 md:grid-cols-2">
+            {/* Nome */}
+            <div className="md:col-span-2">
+              <label className="block text-gray-300 font-medium mb-1">
+                Nome do Cliente
+              </label>
+              <input
+                type="text"
+                placeholder="Digite o nome completo"
+                className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder:text-gray-500 focus:ring-2 focus:ring-violet-500 focus:border-transparent focus:outline-none transition-all"
+              />
+            </div>
+
+            {/* Telefone */}
+            <div>
+              <label className="block text-gray-300 font-medium mb-1">
+                Telefone
+              </label>
+              <input
+                type="tel"
+                placeholder="9XX XXX XXX"
+                className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder:text-gray-500 focus:ring-2 focus:ring-violet-500 focus:border-transparent focus:outline-none transition-all"
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label className="block text-gray-300 font-medium mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                placeholder="email@exemplo.com"
+                className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder:text-gray-500 focus:ring-2 focus:ring-violet-500 focus:border-transparent focus:outline-none transition-all"
+              />
+            </div>
+
+            {/* Serviço */}
+            <div>
+              <label className="block text-gray-300 font-medium mb-1">
+                Serviço
+              </label>
+              <select className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:ring-2 focus:ring-violet-500 focus:border-transparent focus:outline-none transition-all">
+                <option value="" className="bg-gray-900">
+                  Selecione o serviço
+                </option>
+                <option className="bg-gray-900">Corte Masculino</option>
+                <option className="bg-gray-900">Barba</option>
+                <option className="bg-gray-900">Corte + Barba</option>
+                <option className="bg-gray-900">Tratamento Capilar</option>
+              </select>
+            </div>
+
+            {/* Profissional */}
+            <div>
+              <label className="block text-gray-300 font-medium mb-1">
+                Profissional
+              </label>
+              <select className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:ring-2 focus:ring-violet-500 focus:border-transparent focus:outline-none transition-all">
+                <option value="" className="bg-gray-900">
+                  Selecione o profissional
+                </option>
+                <option className="bg-gray-900">Eldocarmo</option>
+                <option className="bg-gray-900">Ricardo</option>
+                <option className="bg-gray-900">Lucas</option>
+                <option className="bg-gray-900">Miguel</option>
+              </select>
+            </div>
+
+            {/* Data */}
+            <div>
+              <label className="block text-gray-300 font-medium mb-1">
+                Data
+              </label>
+              <input
+                type="date"
+                className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:ring-2 focus:ring-violet-500 focus:border-transparent focus:outline-none transition-all"
+              />
+            </div>
+
+            {/* Horário */}
+            <div>
+              <label className="block text-gray-300 font-medium mb-1">
+                Horário
+              </label>
+              <input
+                type="time"
+                className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:ring-2 focus:ring-violet-500 focus:border-transparent focus:outline-none transition-all"
+              />
+            </div>
+
+            {/* AÇÕES */}
+            <div className="md:col-span-2 flex justify-end gap-3 mt-4">
+              <button
+                type="button"
+                onClick={() => setOpenNovo(false)}
+                className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg cursor-pointer transition-colors"
+              >
+                Cancelar
+              </button>
+
+              <button
+                type="submit"
+                className="px-6 py-3 bg-violet-600 hover:bg-violet-500 text-white font-semibold rounded-lg cursor-pointer shadow-lg shadow-violet-500/20 transition-all active:scale-95"
+              >
+                Confirmar Agendamento
+              </button>
+            </div>
+          </form>
+        </div>
+      </Modal>
     </CondoLayout>
   );
 }
